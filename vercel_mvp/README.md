@@ -49,6 +49,55 @@ Review UI code for compliance with web interface best practices. Audits your cod
 - Touch & Interaction (touch-action, tap-highlight)
 - Locale & i18n (Intl.DateTimeFormat, Intl.NumberFormat)
 
+### wordpress-migration-best-practices
+
+Best practices for migrating content out of WordPress. Covers multiple extraction strategies, plugin-specific content handling, and migration planning.
+
+**Use when:**
+- "Migrate from WordPress"
+- "Export WordPress content"
+- "WordPress migration strategy"
+- "Move off WordPress"
+
+**Extraction strategies covered:**
+- WordPress XML Export (WXR) — structured content with metadata
+- Site Mirroring (HTTrack/wget) — rendered HTML and all media
+- Combined approach — cross-reference both for best results
+- Direct database access — for large sites or plugin-specific data
+
+**Plugin-specific guidance:**
+- WooCommerce (products, variations, categories)
+- Contact Forms (CF7, Gravity Forms, WPForms)
+- Page Builders (Elementor, WPBakery/Visual Composer, Divi)
+- SEO Plugins (Yoast, Rank Math)
+- Advanced Custom Fields (ACF)
+
+### wp-to-jekyll
+
+Migrate WordPress content to Jekyll. Covers the full pipeline from content extraction through Jekyll architecture setup and deployment.
+
+**Use when:**
+- "Convert WordPress to Jekyll"
+- "Migrate WP to Jekyll"
+- "WordPress to static site"
+- "Export WordPress to markdown"
+
+**Pipeline:**
+1. Source acquisition (mirror + XML export)
+2. Content extraction (classify URLs → Jekyll collections)
+3. Content cleanup (strip Gutenberg, Visual Composer, inline styles)
+4. Jekyll architecture (collections, layouts, config)
+5. Content format conversion (HTML → Markdown where appropriate)
+6. Build & deployment (Netlify, GitHub Pages)
+
+**Covers:**
+- URL-to-collection mapping (posts, pages, custom post types)
+- Frontmatter extraction from WordPress meta tags and XML
+- 7-step cleanup pipeline for WordPress markup artifacts
+- Image handling (lazy loading, query params, path rewriting)
+- Permalink preservation for SEO
+- Deployment to Netlify and GitHub Pages
+
 ### vercel-deploy-claimable
 
 Deploy applications and websites to Vercel instantly. No authentication required. Deployments are "claimable" - users can transfer ownership to their own Vercel account.
