@@ -17,6 +17,21 @@ Reference this skill when:
 - Cleaning up WordPress markup artifacts for static site use
 - Configuring Jekyll collections to match WordPress content types
 
+## Quick Start — Starter Template
+
+Clone the **jekyllwind** starter repo to get a pre-configured Jekyll + Tailwind CSS project:
+
+```bash
+git clone https://github.com/koolamusic/jekyllwind my-jekyll-site
+cd my-jekyll-site
+bundle install && pnpm install
+bundle exec jekyll serve   # Dev server at localhost:4000
+```
+
+This gives you a working Jekyll + Tailwind foundation with PostCSS already configured. From here, add your migrated WordPress content into the `_posts/`, `_layouts/`, and `pages/` directories.
+
+> **Why use the starter?** Setting up Jekyll with Tailwind CSS and PostCSS from scratch requires coordinating Ruby gems, Node packages, and build config. The starter handles all of this so you can focus on migrating content.
+
 ## Prerequisites
 
 ### System Dependencies
@@ -26,12 +41,16 @@ Reference this skill when:
 | Ruby | 3.2+ | Jekyll runtime |
 | Bundler | latest | Ruby dependency management |
 | Node.js | 18+ | Tailwind CSS / asset compilation |
+| pnpm | latest | Node package manager (used by jekyllwind starter) |
 | Python 3 | 3.8+ | Content extraction and cleanup scripts |
 | BeautifulSoup4 | latest | HTML parsing in Python scripts |
 
-### Gemfile
+### Starting From Scratch (without the starter)
+
+If you prefer to set up manually instead of cloning jekyllwind:
 
 ```ruby
+# Gemfile
 gem 'jekyll', '~> 4.4'
 gem 'webrick'               # Dev server (Ruby 3.x dropped it from stdlib)
 gem 'jekyll-postcss-v2'     # PostCSS/Tailwind integration (optional)
@@ -46,7 +65,7 @@ gem 'base64'                # Ruby 3.x stdlib extraction
 ### Bootstrap
 
 ```bash
-bundle install && npm install   # Install all dependencies
+bundle install && pnpm install  # Install all dependencies
 bundle exec jekyll serve        # Dev server at localhost:4000
 bundle exec jekyll build        # Production build to _site/
 ```
@@ -246,26 +265,30 @@ python3 scripts/clean.py --file x.html # Process single file
 
 ### Directory Structure
 
+If you cloned the `jekyllwind` starter, you already have the base structure. Extend it for your migrated content:
+
 ```
-your-jekyll-site/
-├── _config.yml           # Site config, collections, defaults, plugins
-├── _posts/               # Blog posts (YYYY-MM-DD-slug.html or .md)
-├── _drafts/              # Unpublished posts
-├── _layouts/             # Page templates
-│   ├── default.html      # Base layout: <html>, <head>, nav, footer
-│   ├── post.html         # Blog post template
-│   └── page.html         # Generic page template
-├── _includes/            # Reusable components
+my-jekyll-site/                   # git clone https://github.com/koolamusic/jekyllwind
+├── _config.yml                   # Site config, collections, defaults, plugins
+├── _posts/                       # Blog posts (YYYY-MM-DD-slug.html or .md)
+├── _drafts/                      # Unpublished posts (add this)
+├── _layouts/                     # Page templates (from starter)
+│   ├── default.html              # Base layout: <html>, <head>, nav, footer
+│   ├── post.html                 # Blog post template
+│   └── page.html                 # Generic page template
+├── _includes/                    # Reusable components (add as needed)
 │   ├── header.html
 │   ├── footer.html
 │   └── post-card.html
-├── pages/                # Standalone pages (about, contact, etc.)
+├── pages/                        # Standalone pages (about, contact, etc.)
 ├── assets/
-│   ├── css/
-│   └── images/uploads/   # Migrated WordPress media (YYYY/MM/)
-├── Gemfile               # Ruby dependencies
-├── package.json          # Node dependencies (if using Tailwind)
-└── netlify.toml          # Deployment config (optional)
+│   ├── css/main.css              # Tailwind directives (from starter)
+│   └── images/uploads/           # Migrated WordPress media (YYYY/MM/)
+├── Gemfile                       # Ruby dependencies (from starter)
+├── package.json                  # Node dependencies (from starter)
+├── tailwind.config.js            # Tailwind theme config (from starter)
+├── postcss.config.js             # PostCSS pipeline (from starter)
+└── netlify.toml                  # Deployment config (add this)
 ```
 
 ### Custom Collections
